@@ -22,6 +22,48 @@ import "../style/index.css";
         city: null
     }
  */
+
+function verifi(variables) {
+  let arr = [];
+  arr[0] = "4geeksacademy";
+  arr[1] = "4geeksacademy";
+  arr[2] = "4geeksacademy";
+  arr[3] = "4geeksacademy";
+  arr[4] = "Miami";
+  arr[5] = "USA";
+  arr[6] = "Web Developer";
+  arr[7] = "Lucy";
+  arr[8] = "Boylett";
+  if (variables.twitter != null) {
+    arr[0] = variables.twitter;
+  }
+  if (variables.github != null) {
+    arr[1] = variables.github;
+  }
+  if (variables.linkedin != null) {
+    arr[2] = variables.linkedin;
+  }
+  if (variables.instagram != null) {
+    arr[3] = variables.instagram;
+  }
+  if (variables.city != null) {
+    arr[4] = variables.city;
+  }
+  if (variables.country != null) {
+    arr[5] = variables.country;
+  }
+  if (variables.role != null) {
+    arr[6] = variables.role;
+  }
+  if (variables.name != null) {
+    arr[7] = variables.name;
+  }
+  if (variables.lastname != null) {
+    arr[8] = variables.lastname;
+  }
+
+  return arr;
+}
 function render(variables = {}) {
   console.log("These are the current variables: ", variables); //print on the console
   // here we ask the logical questions to make decisions on how to build the html
@@ -30,17 +72,19 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   // reset the website body with the new html output
+  let verif = [];
+  verif = verifi(variables);
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${verif[7]} ${verif[8]}</h1>
+          <h2>${verif[6]}</h2>
+          <h3>${verif[4]}, ${verif[5]}</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href="https://twitter.com/${verif[0]}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${verif[1]}"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/${verif[2]}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${verif[3]}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
